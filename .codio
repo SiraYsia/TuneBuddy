@@ -1,0 +1,9 @@
+{
+    "preview": {
+        "VS Code": "https://{{domain4000}}/",
+        "Virtual Desktop": "https://{{domain3050}}/",
+        "Project Index (static)": "https://{{domain}}/{{index}}",
+        "Current File (static)": "https://{{domain}}/{{filepath}}",
+        "Box URL": "https://{{domain3000}}/"
+    }
+}
