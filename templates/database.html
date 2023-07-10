@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+{% block content %}
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "../static/css/database.css">
+</head>
+<body>
+    <table class = "data-table">
+        <tr>
+            <th>ID</th>
+            <th>Lyrics</th>
+            <th>First Possible Song</th>
+            <th>Second Possible Song</th>
+            <th>Third Possible Song</th>
+            <th>Delete</th>
+        </tr>
+        {% for data in all_songs_data %}
+        <tr>
+            <td>{{ data.id }}</td>
+            <td>{{ data.lyrics }}</td>
+            <td>{{ data.first_possible_song }}</td>
+            <td>{{ data.second_possible_song }}</td>
+            <td>{{ data.third_possible_song }}</td>
+            <td>
+                <a href = "/delete-song/{{ data.id }}">X</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock content %}

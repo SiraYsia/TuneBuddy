@@ -1,27 +1,29 @@
-# import flask here
 import requests
 
-# do all flask set up here
-
-# Define API endpoint URL and your API key
-API_ENDPOINT = 'https://api.musixmatch.com/ws/1.1/'
+url = 'https://api.musixmatch.com/ws/1.1/'
 API_KEY = '236e0d15c2fdc11e1d9ffc90054e9c0b'
 
-lyrics = input('lyrics: ')
+def songFinder(lyrics):
+    params = {
+        'apikey': API_KEY,
+        'q_lyrics': lyrics,
+        'q_track': '',
+        'f_has_lyrics': 1,
+        's_track_rating': 'desc',
+        'page_size': 10,
+        'page': 1
+    }
 
-# Create request parameters based on user input
-params = {
-    'apikey': API_KEY,
-    'q_lyrics': lyrics,
-    'q_track': '',
-    'f_has_lyrics': 1,
-    's_track_rating': 'desc',
-    'page_size': 10,
-    'page': 1
-}
+    response = requests.get(url + 'track.search', params=params)
 
+    if response.status_code == 200:
+        data = response.json()
+        possible_songs = []
+        for i in range(3):
+            track_name = data["message"]["body"]["track_list"][i]["track"]["track_name"]
+            track_artist = data["message"]["body"]["track_list"][i]["track"]["artist_name"]
+            song = track_name + " By: " + track_artist
+            possible_songs.append(song)
+        return possible_songs
 
-# Send the request to the API endpoint
-
-response = requests.get(API_ENDPOINT + 'track.search', params=params).json()
-print(response["message"])
+print(songFinder("I bet she's never had a backstreet guy"))

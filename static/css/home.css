@@ -1,0 +1,43 @@
+/* Form styling */
+
+.song-input-section {
+    margin: 5% auto;
+  }
+  
+  .form-group {
+    border: 0px;
+  }
+  
+input.form-control {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: black;
+    width: 15%;
+    caret-color: white;
+    color: white;
+}
+  
+.invalid-feedback {
+    color: red;
+    margin: 10px;
+}
+
+.btn-outline-info {
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.btn-outline-info:hover {
+    cursor: pointer;
+}
+
+.songs-list {
+    border: 1px solid white;
+    border-radius: 15px;
+    text-align: left;
+    margin: 5% auto;
+    width: max-content;
+    padding: 10px 30px 10px 10px;
+}

@@ -1,0 +1,42 @@
+{% extends 'template.html' %}
+{% block content %}
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "../static/css/home.css">
+</head>
+<body>
+    <div class="song-input-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.lyrics.label(class="form-control-label") }}
+                    {% if form.lyrics.errors %}
+                        {{ form.lyrics(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lyrics.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lyrics(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+
+    {% if song_data %}
+        <div class="songs-list">
+            <ul>
+                <li><b>Possible Songs</b></li>
+                <li>{{ song_data.first_possible_song }}</li>
+                <li>{{ song_data.second_possible_song }}</li>
+                <li>{{ song_data.third_possible_song }}</li>
+            </ul>
+        </div>
+    {% endif %}
+</body>
+{% endblock content %}
