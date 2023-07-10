@@ -23,5 +23,12 @@ params = {
 
 # Send the request to the API endpoint
 
-response = requests.get(API_ENDPOINT + 'track.search', params=params).json()
-print(response["message"])
+response = requests.get(API_ENDPOINT + 'track.search', params=params)
+
+if response.status_code == 200:
+    data = response.json()
+    track_name = data["message"]["body"]["track_list"][0]["track"]["track_name"]
+    print(f"The track you are looking for is: {track_name}")
+else:
+    print("Error:", response.status_code)
+
