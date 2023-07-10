@@ -26,4 +26,3 @@ def songFinder(lyrics):
             possible_songs.append(song)
         return possible_songs
 
-print(songFinder("I bet she's never had a backstreet guy"))
