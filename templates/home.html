@@ -31,10 +31,16 @@
     {% if song_data %}
         <div class="songs-list">
             <ul>
+                {% if song_data.first_possible_song != "None" %}
                 <li><b>Possible Songs</b></li>
                 <li>{{ song_data.first_possible_song }}</li>
                 <li>{{ song_data.second_possible_song }}</li>
                 <li>{{ song_data.third_possible_song }}</li>
+                {% else %}
+                <li><b>Possible Songs</b></li>
+                <li>None of our songs matched those lyrics!</li>
+                <li>Hint: Try providing more info on the song to narrow down the search.</li>
+                {% endif %}
             </ul>
         </div>
     {% endif %}

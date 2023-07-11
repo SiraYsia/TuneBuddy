@@ -18,11 +18,12 @@ def songFinder(lyrics):
 
     if response.status_code == 200:
         data = response.json()
+        track_list = data["message"]["body"]["track_list"]
         possible_songs = []
-        for i in range(3):
-            track_name = data["message"]["body"]["track_list"][i]["track"]["track_name"]
-            track_artist = data["message"]["body"]["track_list"][i]["track"]["artist_name"]
-            song = track_name + " By: " + track_artist
-            possible_songs.append(song)
+        if not(track_list == []):
+            for i in range(3):
+                track_name = data["message"]["body"]["track_list"][i]["track"]["track_name"]
+                track_artist = data["message"]["body"]["track_list"][i]["track"]["artist_name"]
+                song = track_name + " By: " + track_artist
+                possible_songs.append(song)
         return possible_songs
-

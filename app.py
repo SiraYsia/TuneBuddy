@@ -47,7 +47,11 @@ def renderHome():
         try:
             lyrics = form.lyrics.data
             possible_songs = songFinder(lyrics)
-            new_song_data = Songs(lyrics=lyrics, first_possible_song=possible_songs[0], second_possible_song=possible_songs[1], third_possible_song=possible_songs[2])
+            # If no songs were found with the given lyrics
+            if possible_songs == []:
+                new_song_data = Songs(lyrics=lyrics, first_possible_song="None", second_possible_song="None", third_possible_song="None")
+            else:
+                new_song_data = Songs(lyrics=lyrics, first_possible_song=possible_songs[0], second_possible_song=possible_songs[1], third_possible_song=possible_songs[2])
             db.session.add(new_song_data)
             db.session.commit()
             logging.info(f"Song data was added successfully!")
