@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from form import SongForm
-from FindMySong import songFinder
+from tuneBuddy import songFinder
 import git
 import logging
 
@@ -47,7 +47,6 @@ def renderHome():
         try:
             lyrics = form.lyrics.data
             possible_songs = songFinder(lyrics)
-            print(f"Possible songs to be added: {possible_songs}")
             new_song_data = Songs(lyrics=lyrics, first_possible_song=possible_songs[0], second_possible_song=possible_songs[1], third_possible_song=possible_songs[2])
             db.session.add(new_song_data)
             db.session.commit()
