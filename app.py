@@ -16,6 +16,8 @@ db = SQLAlchemy(app)
 class Songs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     lyrics = db.Column(db.String(50), nullable=False)
+    artist_name = db.Column(db.String(50), nullable=False)
+    genre = db.Column(db.String(50), nullable=False)
     first_possible_song = db.Column(db.String(100), nullable=False)
     second_possible_song = db.Column(db.String(100), nullable=False)
     third_possible_song = db.Column(db.String(100), nullable=False)
@@ -46,12 +48,18 @@ def renderHome():
     if form.validate_on_submit():
         try:
             lyrics = form.lyrics.data
-            possible_songs = songFinder(lyrics)
-            # If no songs were found with the given lyrics
+            artist_name = form.artist_name.data
+            genre = form.genre.data
+            possible_songs = songFinder(lyrics, artist_name, genre)
+            if artist_name == "":
+                artist_name = "None"
+            if genre == "":
+                genre = "None"
+            # Checks if no songs were found with the given lyrics
             if possible_songs == []:
-                new_song_data = Songs(lyrics=lyrics, first_possible_song="None", second_possible_song="None", third_possible_song="None")
+                new_song_data = Songs(lyrics=lyrics, artist_name=artist_name, genre=genre, first_possible_song="None", second_possible_song="None", third_possible_song="None")
             else:
-                new_song_data = Songs(lyrics=lyrics, first_possible_song=possible_songs[0], second_possible_song=possible_songs[1], third_possible_song=possible_songs[2])
+                new_song_data = Songs(lyrics=lyrics, artist_name=artist_name, genre=genre, first_possible_song=possible_songs[0], second_possible_song=possible_songs[1], third_possible_song=possible_songs[2])
             db.session.add(new_song_data)
             db.session.commit()
             logging.info(f"Song data was added successfully!")

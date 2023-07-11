@@ -5,9 +5,10 @@
 </head>
 <body>
     <div class="song-input-section">
-        <form method="POST" action="">
+        <form method="POST" action="/">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
+                <!-- Required User Input Begins Here -->
                 <div class="form-group">
                     {{ form.lyrics.label(class="form-control-label") }}
                     {% if form.lyrics.errors %}
@@ -22,8 +23,43 @@
                     {% endif %}
                 </div>
             </fieldset>
+            <!-- Optional User Input Begins Here -->
+            <div class = "narrow-search-section">
+                <p>Would you like to narrow down the search?</p>
+                <button id = "narrow-search-yes-button", type = "narrow-search">Yes</button>
+                <button id = "narrow-search-no-button", type = "narrow-search">No</button>
+            </div>
+            <div id = "optional-song-input-section">
+                <p>Optional:</p>
+                <div class = "first-optional-input">
+                {{ form.artist_name.label(class="form-control-label") }}
+                {% if form.artist_name.errors %}
+                    {{ form.artist_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.artist_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.artist_name(class="form-control form-control-lg") }}
+                {% endif %}
+                </div>
+                <div class = "second-optional-input">
+                {{ form.genre.label(class="form-control-label") }}
+                {% if form.genre.errors %}
+                    {{ form.genre(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.genre.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.genre(class="form-control form-control-lg") }}
+                {% endif %}
+                </div>
+            </div>
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit(class="btn btn-outline-info", id="submit-button") }}
             </div>
         </form>
     </div>
@@ -32,10 +68,14 @@
         <div class="songs-list">
             <ul>
                 {% if song_data.first_possible_song != "None" %}
-                <li><b>Possible Songs</b></li>
-                <li>{{ song_data.first_possible_song }}</li>
-                <li>{{ song_data.second_possible_song }}</li>
-                <li>{{ song_data.third_possible_song }}</li>
+                    <li><b>Possible Songs</b></li>
+                    <li>{{ song_data.first_possible_song }}</li>
+                    {% if song_data.second_possible_song != "None" %}
+                        <li>{{ song_data.second_possible_song }}</li>
+                        {% if song_data.third_possible_song != "None" %}
+                            <li>{{ song_data.third_possible_song }}</li>
+                        {% endif %}
+                    {% endif %}
                 {% else %}
                 <li><b>Possible Songs</b></li>
                 <li>None of our songs matched those lyrics!</li>
@@ -44,5 +84,6 @@
             </ul>
         </div>
     {% endif %}
+    <script src = "../static/js/narrowSearch.js"></script>
 </body>
 {% endblock content %}
