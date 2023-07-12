@@ -2,7 +2,6 @@ from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from form import SongForm
 from tuneBuddy import songFinder
-import git
 import logging
 
 
