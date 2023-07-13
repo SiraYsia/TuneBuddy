@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from form import SongForm
 from tuneBuddy import songFinder
 import logging
+import git
 
 
 app = Flask(__name__)
@@ -30,15 +31,15 @@ with app.app_context():
 
 # Functionality to support website when hosted on pythonanywhere.com
 
-# @app.route("/update_server", methods=['POST'])
-# def webhook():
-#     if request.method == 'POST':
-#         repo = git.Repo('/home/spava001/SEO-Project-2-NEW')
-#         origin = repo.remotes.origin
-#         origin.pull()
-#         return 'Updated PythonAnywhere successfully', 200
-#     else:
-#         return 'Wrong event type', 400
+@app.route("/update_server", methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('/home/TuneBuddy/TuneBuddy')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 
 
 @app.route("/", methods=['GET', 'POST'])
