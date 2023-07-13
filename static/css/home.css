@@ -1,5 +1,26 @@
 /* Form styling */
 
+#main {
+    font-family: Karla;
+    background-color: #fff7f2;
+    color: #39237D;
+    height: 500px;
+    width: 450px;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 5%;
+    min-height: 80vh;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+h2 {
+    font-weight: bolder;
+    font-size: 50px;
+    margin: 0;
+    padding-top: 30px;
+}
+
 /* Required lyrics input styling starts here */
 
 .song-input-section {
@@ -10,13 +31,30 @@
     border: 0px;
   }
   
-input.form-control {
+input.form-control-1 {
     border: 1px solid white;
     border-radius: 5px;
-    background-color: black;
-    width: 15%;
+    background-color: white;
+    width: 70%;
+    height: 30px;
+    margin-top: 20px;
     caret-color: white;
-    color: white;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+input.form-control-2 {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+    width: 70%;
+    height: 20px;
+    caret-color: white;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
 }
   
 .invalid-feedback {
@@ -32,8 +70,8 @@ input.form-control {
 #narrow-search-yes-button,
 #narrow-search-no-button {
     border: 2px solid white;
-    border-radius: 5px;
-    background-color: black;
+    border-radius: 8px;
+    background-color: #CC4AC4;
     color: white;
 }
 
@@ -41,6 +79,14 @@ input.form-control {
 #narrow-search-button {
     cursor: pointer;
 }
+
+#submit-button {
+    padding: 15px;
+    border-radius: 15px;
+    width: 300px;
+    font-size: 28px;
+}
+
 /* Form submit button styling ends here */
 
 /* Optional user input section starts here */
