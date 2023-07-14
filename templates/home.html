@@ -8,7 +8,7 @@
   />
 </head>
 <body>
-  <div id="main">
+  <div class="square-bg">
     <h2>
       Hi &#128075; <br />
       I'm Tilly, your <br />
@@ -53,8 +53,8 @@
               <span>{{ error }}</span>
               {% endfor %}
             </div>
-            {% else %} {{ form.artist_name(class="form-control-2 form-control-lg")
-            }} {% endif %}
+            {% else %} {{ form.artist_name(class="form-control-2
+            form-control-lg") }} {% endif %}
           </div>
           <div class="second-optional-input">
             {{ form.genre.label(class="form-control-label") }} {% if
@@ -65,8 +65,8 @@
               <span>{{ error }}</span>
               {% endfor %}
             </div>
-            {% else %} {{ form.genre(class="form-control-2 form-control-lg") }} {%
-            endif %}
+            {% else %} {{ form.genre(class="form-control-2 form-control-lg") }}
+            {% endif %}
           </div>
         </div>
         <div class="form-group">
@@ -77,23 +77,30 @@
   </div>
 
   {% if song_data %}
-  <div class="songs-list">
-    <ul>
-      {% if song_data.first_possible_song != "None" %}
-      <li><b>Possible Songs</b></li>
-      <li>{{ song_data.first_possible_song }}</li>
-      {% if song_data.second_possible_song != "None" %}
-      <li>{{ song_data.second_possible_song }}</li>
-      {% if song_data.third_possible_song != "None" %}
-      <li>{{ song_data.third_possible_song }}</li>
+  <div class="square-bg">
+    <h2>
+      Here are some<br />
+      tunes you may be<br />
+      looking for . . .
+    </h2>
+    <div class="songs-list">
+      <ul>
+        {% if song_data.first_possible_song != "None" %}
+        <li class="songs-list-item">{{ song_data.first_possible_song }}</li>
+        {% if song_data.second_possible_song != "None" %}
+        <li class="songs-list-item">{{ song_data.second_possible_song }}</li>
+        {% if song_data.third_possible_song != "None" %}
+        <li class="songs-list-item">{{ song_data.third_possible_song }}</li>
+      </ul>
       {% endif %} {% endif %} {% else %}
-      <li><b>Possible Songs</b></li>
-      <li>None of our songs matched those lyrics!</li>
-      <li>
-        Hint: Try providing more info on the song to narrow down the search.
-      </li>
+      <p id="result-error-msg" class="no-songs-matched">
+        None of our songs matched those lyrics &#128546;
+      </p>
+      <p class="no-songs-matched">
+        <span class="bold">Hint: </span> Try providing more info on the song to narrow down the search.
+      </p>
       {% endif %}
-    </ul>
+    </div>
   </div>
   {% endif %}
   <script src="../static/js/narrowSearch.js"></script>

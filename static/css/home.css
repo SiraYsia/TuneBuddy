@@ -1,6 +1,14 @@
+/* Background styling */
+body {
+    background-image: url("../images/tuneBuddyBackground.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* Form styling */
 
-#main {
+.square-bg {
     font-family: Karla;
     background-color: #fff7f2;
     color: #39237D;
@@ -32,7 +40,7 @@ h2 {
   }
   
 input.form-control-1 {
-    border: 1px solid white;
+    border: 1px solid lightgray;
     border-radius: 5px;
     background-color: white;
     width: 70%;
@@ -46,7 +54,7 @@ input.form-control-1 {
 }
 
 input.form-control-2 {
-    border: 1px solid white;
+    border: 1px solid lightgray;
     border-radius: 5px;
     background-color: white;
     width: 70%;
@@ -64,7 +72,7 @@ input.form-control-2 {
 
 /* Required lyrics input styling ends here */
 
-/* Form submit button styling starts here */
+/* Form button styling starts here */
 
 .btn-outline-info,
 #narrow-search-yes-button,
@@ -87,7 +95,7 @@ input.form-control-2 {
     font-size: 28px;
 }
 
-/* Form submit button styling ends here */
+/* Form button styling ends here */
 
 /* Optional user input section starts here */
 
@@ -116,19 +124,37 @@ input.form-control-2 {
     padding: 5px;
 }
 
-/* .optional-song-input-section input {
-    display: block;
-} */
-
 /* Optional user input section ends here */
 
-/* Styling for displaying songs to user */
+/* Song display styling starts here */
 
 .songs-list {
-    border: 1px solid white;
-    border-radius: 15px;
+    font-size: 18px;
     text-align: left;
     margin: 5% auto;
-    width: max-content;
     padding: 10px 30px 10px 10px;
 }
+
+.songs-list-item {
+    margin-bottom: 3%;
+    list-style-type: circle;
+}
+
+.no-songs-matched {
+    text-align: center;
+    padding: 0px;
+}
+
+#result-error-msg {
+    font-size: 30px;
+}
+
+#result-error-hint {
+    font-size: 18px;
+}
+
+.bold {
+    font-weight: 1000;
+}
+
+/* Song display styling ends here */
